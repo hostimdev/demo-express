@@ -17,6 +17,10 @@ const User = sequelize.define('User', {
   status: {
     type: DataTypes.ENUM('active', 'inactive'),
     defaultValue: 'active'
+  },
+  avatarPath: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 });
 

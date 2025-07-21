@@ -3,13 +3,18 @@ extends layout
 block content
   h1= title
 
-  form(action="/users", method="POST")
+  form(action="/users", method="POST", enctype="multipart/form-data")
     div
       label(for="name") Name:
       input(type="text", id="name", name="name" required)
     div
       label(for="email") Email:
       input(type="email", id="email", name="email" required)
+    div.file-upload-container
+      label(for="avatar") Avatar:
+      div.file-input-controls
+        input(type="file", id="avatar", name="avatar")
+        button(type="button", id="clearFileButton") Clear
     button(type="submit") Add User
 
   h2 User List
@@ -17,6 +22,25 @@ block content
     p Data source: #{dataSource}
     ul
       each user in users
-        li #{user.name} (#{user.email}) - #{user.status}
+        li
+          if user.avatarPath
+            img(src=user.avatarPath, alt=user.name, width="50", height="50")
+          else
+            span No avatar
+          span  #{user.name} (#{user.email}) - #{user.status}
   else
     p No users found
+
+  script.
+    // JavaScript to handle the clear button functionality
+    document.getElementById('clearFileButton').addEventListener('click', function() {
+      var fileInput = document.getElementById('avatar');
+      // Create a new file input element
+      var newFileInput = document.createElement('input');
+      newFileInput.type = 'file';
+      newFileInput.id = 'avatar';
+      newFileInput.name = 'avatar';
+
+      // Replace the old file input with the new one
+      fileInput.parentNode.replaceChild(newFileInput, fileInput);
+    });

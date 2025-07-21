@@ -4,5 +4,67 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input {
+  padding: 5px;
+  width: 300px;
+}
+
+.file-upload-container {
+  margin-bottom: 15px;
+}
+
+.file-input-controls {
+  display: flex;
+  align-items: center;
+}
+
+.file-input-controls input[type="file"] {
+  flex: 1;
+  margin-right: 10px;
+}
+
+#clearFileButton {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+button[type="submit"] {
+  padding: 8px 15px;
+  background-color: #00b7ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+li img {
+  margin-right: 10px;
+  border-radius: 25px;
+  object-fit: cover;
 }

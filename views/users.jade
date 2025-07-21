@@ -14,6 +14,7 @@ block content
 
   h2 User List
   if users && users.length
+    p Data source: #{dataSource}
     ul
       each user in users
         li #{user.name} (#{user.email}) - #{user.status}

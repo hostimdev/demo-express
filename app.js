@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 // Add database connection
 var sequelize = require('./config/database');
+// Add Redis connection
+var redisClient = require('./config/redis');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -35,6 +37,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make Redis client available in the request
+app.use((req, res, next) => {
+  req.redisClient = redisClient;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
